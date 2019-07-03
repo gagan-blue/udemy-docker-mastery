@@ -8,6 +8,12 @@ FROM debian:stretch-slim
 # usually from a minimal Linux distribution like debian or (even better) alpine
 # if you truly want to start with an empty container, use FROM scratch
 
+#dockerfile of stretch-slim build
+#FROM scratch
+#ADD rootfs.tar.xz /
+#CMD ["bash"]
+
+
 ENV NGINX_VERSION 1.13.6-1~stretch
 ENV NJS_VERSION   1.13.6.0.1.14-1~stretch
 # optional environment variable that's used in later lines and set as envvar when container is running
