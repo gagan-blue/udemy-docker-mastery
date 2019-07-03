@@ -30,8 +30,8 @@ COPY package.json package.json
 # - then it needs to run 'npm install' to install dependencies from that file
 RUN npm install && npm cache clean
 # - to keep it clean and small, run 'npm cache clean --force' after above
-# - then it needs to copy in all files from current directory
-COPY . .
+# - then it needs to copy in all files (SOURCE CODE) from current directory
+COPY . .  
 # - then it needs to start container with command '/sbin/tini -- node ./bin/www'
 CMD [ "/sbin/tini", "--", "node", "./bin/www" ]
 # - in the end you should be using FROM, RUN, WORKDIR, COPY, EXPOSE, and CMD commands
