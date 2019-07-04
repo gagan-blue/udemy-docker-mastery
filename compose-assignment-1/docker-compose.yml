@@ -11,8 +11,12 @@ services:
       #docker image inspect php:7.0-apache | grep -i expose
       #docker image inspect drupal | grep -i expose
       
-    volumes:
-      -   
+    volumes: #extra credit
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles
+      - drupal-sites:/var/www/html/sites
+      - drupal-themes:/var/www/html/themes
+      
       
 postgres:
   image: postgres
@@ -23,4 +27,9 @@ postgres:
     - POSTGRES_PASSWORD=passwd
     
     
+volumes:
+      - drupal-modules
+      - drupal-profiles
+      - drupal-sites
+      - drupal-themes
     
