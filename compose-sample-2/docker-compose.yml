@@ -1,3 +1,23 @@
+2 containers 
+1. proxy (image nginx)
+2. web (image httpd)
+
+when only nginx is runnign you see "Welcome to nginx server"
+we have configured nginx as proxy server (nginx.conf)
+listen 80;
+	location / {
+		proxy_pass         http://web; #web is the dns name of httpd server
+
+so we see "it works" which is returned by httpd running in another container
+
+docker exec -it httpd bash
+echo $HTTPD_PREFIX
+"/usr/local/apache2"
+cat httpd.conf  | grep -i documentroot
+"/usr/local/apache2/htdocs"
+vi index.html 
+"it works"
+
 version: '3'
 
 services:
