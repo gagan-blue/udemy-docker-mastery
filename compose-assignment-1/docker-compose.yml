@@ -1,36 +1,36 @@
 
-version :'2'
+version: '2.2'
 
 services:
   
-  drupal:
-    image: drupal  #check dockrfile. FROM php:7.0-apache
-    ports:
-      - "8080:80" 
+   drupal:
+     image: drupal  #check dockrfile. FROM php:7.0-apache
+     ports:
+       - "8080:80" 
       
       #drupal listens on port 80 - Dockerfile dosn't contain EXPOSE port. check the Dockerfile of FROM image which is php:7.0-apache
       #docker image inspect php:7.0-apache | grep -i expose
       #docker image inspect drupal | grep -i expose
       
-    volumes: #extra credit
-      - drupal-modules:/var/www/html/modules
-      - drupal-profiles:/var/www/html/profiles
-      - drupal-sites:/var/www/html/sites
-      - drupal-themes:/var/www/html/themes
+     volumes: #extra credit
+       - drupal-modules:/var/www/html/modules
+       - drupal-profiles:/var/www/html/profiles
+       - drupal-sites:/var/www/html/sites
+       - drupal-themes:/var/www/html/themes
       
       
-postgres:
-  image: postgres
-  #listens on 5432. no need to setup port forwarding from host to container. will be reachable on the docker network.
-  #both connectors will be in the same docker network and able to connect
-  
-  environment:
-    - POSTGRES_PASSWORD=passwd
+   postgres:
+     image: postgres
+     #listens on 5432. no need to setup port forwarding from host to container. will be reachable on the docker network.
+     #both connectors will be in the same docker network and able to connect
+    
+     environment:
+       - POSTGRES_PASSWORD=passwd
     
     
 volumes:
-      - drupal-modules
-      - drupal-profiles
-      - drupal-sites
-      - drupal-themes
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
     
