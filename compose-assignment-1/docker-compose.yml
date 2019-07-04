@@ -1,1 +1,14 @@
 
+version :'2'
+
+services:
+  drupal:
+    image: drupal  #check dockrfile. FROM php:7.0-apache
+    ports:
+      - "8080:80" #drupal listens on port 80 - Dockerfile dosn't contain EXPOSE port. check the Dockerfile of FROM image which is php:7.0-apache
+      
+      #docker image inspect php:7.0-apache | grep -i expose
+      #docker image inspect drupal | grep -i expose
+      
+      
+      
