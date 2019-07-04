@@ -2,6 +2,7 @@
 version :'2'
 
 services:
+  
   drupal:
     image: drupal  #check dockrfile. FROM php:7.0-apache
     ports:
