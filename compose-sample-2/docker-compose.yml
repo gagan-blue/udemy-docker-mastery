@@ -3,7 +3,7 @@
 #2. web (image httpd) - port not exposed to host, but listening on port 80 fr
 
 #when only nginx is runnign you see "Welcome to nginx server"
-#we have configured nginx as proxy server (nginx.conf)
+#we have configured nginx as proxy server/ load balancer (nginx.conf)
 #listen 80;
 #	location / {
 #		proxy_pass         http://web; #web is the dns name of httpd server#
