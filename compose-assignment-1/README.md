@@ -1,13 +1,14 @@
 # Assignment: Writing a Compose File
+drupal - a content management server which is basically just a website builder, a fully functional webapp needs a database running behind it
 
 > Goal: Create a compose config for a local Drupal CMS website
 
 - This empty directory is where you should create a docker-compose.yml 
 - Use the `drupal` image along with the `postgres` image
 - Set the version to 2
-- Use `ports` to expose Drupal on 8080
+- Use `ports` to expose Drupal on 8080 so you can localhost:80
 - Be sure to setup POSTGRES_PASSWORD on postgres image
 - Walk though Drupal config in browser at http://localhost:8080
-- Tip: Drupal assumes DB is localhost, but it will actually be on the compose service name you give it
+- Tip: Drupal assumes DB is "localhost", change it to the database server dns name ( container service name) . drupul will talk to database server over the docker network.
 - Use Docker Hub documentation to figure out the right environment and volume settings
-- Extra Credit: Use volumes to store Drupal unique data
+- Extra Credit: Use volumes to store Drupal unique data/app data
