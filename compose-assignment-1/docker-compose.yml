@@ -5,10 +5,22 @@ services:
   drupal:
     image: drupal  #check dockrfile. FROM php:7.0-apache
     ports:
-      - "8080:80" #drupal listens on port 80 - Dockerfile dosn't contain EXPOSE port. check the Dockerfile of FROM image which is php:7.0-apache
+      - "8080:80" 
       
+      #drupal listens on port 80 - Dockerfile dosn't contain EXPOSE port. check the Dockerfile of FROM image which is php:7.0-apache
       #docker image inspect php:7.0-apache | grep -i expose
       #docker image inspect drupal | grep -i expose
       
+    volumes:
+      -   
       
-      
+postgres:
+  image: postgres
+  #listens on 5432. no need to setup port forwarding from host to container. will be reachable on the docker network.
+  #both connectors will be in the same docker network and able to connect
+  
+  environment:
+    - POSTGRES_PASSWORD=passwd
+    
+    
+    
