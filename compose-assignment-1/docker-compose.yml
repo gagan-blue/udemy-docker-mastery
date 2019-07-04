@@ -12,7 +12,7 @@ services:
       #docker image inspect php:7.0-apache | grep -i expose
       #docker image inspect drupal | grep -i expose
       
-     volumes: #extra credit
+     volumes: # Our App (drupal) data is stored in postgres so we need to persist postgres VOLUME paths
        - drupal-modules:/var/www/html/modules
        - drupal-profiles:/var/www/html/profiles
        - drupal-sites:/var/www/html/sites
