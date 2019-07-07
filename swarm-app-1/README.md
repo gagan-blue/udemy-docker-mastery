@@ -241,8 +241,8 @@ docker service ps worker
 
 
 
-deploy a complete application stack to the swarm
-docker-compose.yml
+### deploy a complete application stack to the swarm
+docker-compose.yml below
 docker stack deploy
 
 https://github.com/dockersamples/example-voting-app/blob/master/docker-stack.yml
