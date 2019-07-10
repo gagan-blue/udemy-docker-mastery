@@ -1,6 +1,8 @@
-version: "3.1"
+#stack compose file
 
-services:
+version: "3.1"  # secrets supported by 3.1 release. stacks need 3.0
+
+services: # Step 2 assign secrets to services
   psql:
     image: postgres
     secrets:
@@ -10,7 +12,7 @@ services:
       POSTGRES_PASSWORD_FILE: /run/secrets/psql_password
       POSTGRES_USER_FILE: /run/secrets/psql_user
 
-secrets:
+secrets:  # Step 1 define secrets for all 
   psql_user:
     file: ./psql_user.txt
   psql_password:
