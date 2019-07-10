@@ -26,7 +26,7 @@ services:
        #- POSTGRES_PASSWORD=passwd
        - POSTGRES_PASSWORD_FILE=/run/secrets/psql-pw
      volumes:
-       - drupal-data: /var/lib/postgresql/data
+       - drupal-data:/var/lib/postgresql/data
     
 volumes:
   drupal-modules:
@@ -34,7 +34,7 @@ volumes:
   drupal-sites:
   drupal-themes:
   drupal-data:
-      
+
 secrets:
   psql-pw:
     external: true
