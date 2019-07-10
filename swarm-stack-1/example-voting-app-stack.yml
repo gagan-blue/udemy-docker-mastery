@@ -82,7 +82,7 @@ services:
         constraints: [node.role == manager]
 
 networks:
-  frontend:
+  frontend:  #by default overlay driver betwork is created with scope = "swarm"
   backend:
 
 volumes:

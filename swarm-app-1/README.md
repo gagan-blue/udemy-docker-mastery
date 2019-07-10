@@ -241,10 +241,7 @@ docker service ps worker
 
 
 ### deploy a complete application stack to the swarm
-docker-compose -> standalone containers
-swarm docker-compose.yml has extra field "deploy"
-docker-compose up -> standalone containers
-docker stack deploy -> swarm services (multiple containers per service)
+
 
 https://github.com/dockersamples/example-voting-app/blob/master/docker-stack.yml
 
