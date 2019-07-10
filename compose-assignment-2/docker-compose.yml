@@ -1,1 +1,44 @@
-# create your drupal and postgres config here, based off the last assignment
+# create your drupal and postgres config here, based off the last compose-assignment-1
+version: '3.1'  #2.2
+ 
+services:
+  
+   drupal:  #service 1
+     image: drupal:8.2 #custom-drupal - cannot build. so use official version or any docker hub image
+     #build: .  #must use already built image from CI CD
+     ports:
+       - "8080:80" 
+
+     volumes: # Our App (drupal) data is stored in postgres+ drupal container host /var/www/html so we need to persist postgres VOLUME paths
+       - drupal-modules:/var/www/html/modules
+       - drupal-profiles:/var/www/html/profiles
+       - drupal-sites:/var/www/html/sites
+       - drupal-themes:/var/www/html/themes
+      
+      
+   postgres: #service 2
+     image: postgres
+     #listens on 5432. no need to setup port forwarding from host to container. will be reachable on the docker network.
+     #both connectors will be in the same docker network and able to connect
+     secrets:
+      - psql-pw #use this secret and create it inside container /run/secrets/psql-pw
+     environment:
+       #- POSTGRES_PASSWORD=passwd
+       - POSTGRES_PASSWORD_FILE=/run/secrets/psql-pw
+     volumes:
+       - drupal-data: /var/lib/postgresql/data
+    
+volumes:
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
+  drupal-data:
+      
+secrets:
+  psql-pw:
+    external: true
+#
+#secrets:
+#  psql_user:
+#    file: ./psql_user.txt

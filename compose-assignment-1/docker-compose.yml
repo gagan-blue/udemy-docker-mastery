@@ -4,7 +4,8 @@ version: '2.2'
 services:
   
    drupal:
-     image: drupal  #check dockrfile. FROM php:7.0-apache
+     image: custom-drupal  #check dockrfile. FROM php:7.0-apache
+     build: .
      ports:
        - "8080:80" 
       
@@ -27,10 +28,11 @@ services:
      environment:
        - POSTGRES_PASSWORD=passwd
     
-    
+     volumes:
+       - drupal-data: /var/lib/pstgresql/data  
 volumes:
   drupal-modules:
   drupal-profiles:
   drupal-sites:
   drupal-themes:
-    
+  drupal-data:  
