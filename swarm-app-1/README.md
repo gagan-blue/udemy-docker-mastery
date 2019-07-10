@@ -119,7 +119,6 @@ docker service ps redis
 node3
 
 node3>docker exec -it redis.1.j3psttw5uam4xd8rrnegowben bash
-redis-cli -h localhost -p 
 redis container>redis-cli -h localhost -p 6379
 localhost:6379> ping
 PONG
@@ -132,8 +131,7 @@ vote container>ping redis
     64 bytes from 10.0.1.7:
 
 vote container> apk add --no-cache redis
-vote container>redis-cli -h localhost -p 6379
-vote container>redis-cli -h redis -p 6379
+vote container> redis-cli -h redis -p 6379
 redis:6379> ping
 PONG
 
@@ -188,7 +186,7 @@ docker service logs db
 
 
 
-- result
+- result (nodejs)
     - dockersamples/examplevotingapp_result:before
     - web app that shows results
     - runs on high port since just for admins (lets imagine)
@@ -224,6 +222,7 @@ docker service create \
 --name result \
 --network backend \
 -p 5001:80 \
+--replicas 1 \
 dockersamples/examplevotingapp_result:before
 
 result service (nodejs app) reachable from all swarm nodes 
@@ -242,8 +241,10 @@ docker service ps worker
 
 
 ### deploy a complete application stack to the swarm
-docker-compose.yml below
-docker stack deploy
+docker-compose -> standalone containers
+swarm docker-compose.yml has extra field "deploy"
+docker-compose up -> standalone containers
+docker stack deploy -> swarm services (multiple containers per service)
 
 https://github.com/dockersamples/example-voting-app/blob/master/docker-stack.yml
 
